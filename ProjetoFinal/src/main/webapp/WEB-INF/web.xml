@@ -21,4 +21,14 @@ id="WebApp_ID" version="2.5">
     <servlet-name>dm107-projeto-entrega-serlvet</servlet-name>
     <url-pattern>/api/*</url-pattern>
 </servlet-mapping>
+
+<!-- Seguranca -->
+	<filter>
+		<filter-name>AuthenticationFilter</filter-name>
+		<filter-class>br.inatel.projetofinal.RestAuthenticationFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>AuthenticationFilter</filter-name>
+		<url-pattern>/api/*</url-pattern>
+	</filter-mapping>
 </web-app>

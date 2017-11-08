@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response.Status;
 
 
 
-@Path("/servE")
+@Path("/servent")
 public class EntregaService {
 	@Context
 	private UriInfo uriInfo;
@@ -48,11 +48,11 @@ public class EntregaService {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 	}
-	@Path("/add")
+	@Path("/addent")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces({MediaType.APPLICATION_JSON})
-	public Response createContato(Entrega entrega) {
+	public Response createEntrega(Entrega entrega) {
 		EntregaDAO entregaDAO;
 		try {
 			entregaDAO = new EntregaDAO();

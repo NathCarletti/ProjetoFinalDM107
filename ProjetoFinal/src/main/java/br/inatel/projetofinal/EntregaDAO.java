@@ -47,8 +47,8 @@ private Connection conn = null;
 	
 	
 	public Entrega getElementByNumber(int numPedido) throws SQLException{
-		String sql="SELECT * FROM entregadb WHERE numPedido = (?)";
-		PreparedStatement  stm = conn.prepareStatement(sql);
+		String sql="SELECT * FROM entregadb WHERE numPedido = (?)"; //numpPedido = "+numpedido
+		PreparedStatement  stm = conn.prepareStatement(sql);//preparestatement qdo usa ?
 		stm.setInt(1, numPedido);
 		ResultSet rs = stm.executeQuery(sql);
 		Entrega entrega = null;
