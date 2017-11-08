@@ -17,14 +17,14 @@ import javax.ws.rs.core.Response.Status;
 
 
 
-@Path("/serv")
+@Path("/servE")
 public class EntregaService {
 	@Context
 	private UriInfo uriInfo;
 	
 	@GET
 	@Path("/test")
-	@Produces({MediaType.TEXT_HTML,MediaType.APPLICATION_JSON,MediaType.APPLICATION_XML})
+	@Produces({MediaType.TEXT_HTML,MediaType.APPLICATION_JSON})
 	public Response getTeste( ) {
 		String test = "hello world!";
 		GenericEntity<String> entity = new GenericEntity<String>(test) {};
@@ -48,10 +48,10 @@ public class EntregaService {
 			return Response.status(Status.NOT_FOUND).build();
 		}
 	}
-	/*
+	@Path("/add")
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+	@Produces({MediaType.APPLICATION_JSON})
 	public Response createContato(Entrega entrega) {
 		EntregaDAO entregaDAO;
 		try {
@@ -64,8 +64,9 @@ public class EntregaService {
 					.entity(entity)
 					.build();
 		} catch (Exception e) {
+			e.printStackTrace();
 			return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 		}
-	}*/
+	}
 }
 

@@ -4,12 +4,19 @@ public class Usuario {
 	private int id;
 	private String usuario;
 	private String senha;
+	
+
+	public Usuario() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Usuario(int id, String usuario, String senha) {
 		super();
 		this.id = id;
 		this.usuario = usuario;
 		this.senha = senha;
 	}
+	
 	public int getId() {
 		return id;
 	}

@@ -55,7 +55,7 @@ private Connection conn = null;
 		
 		while(rs.next()) {
 			entrega = new Entrega();
-			entrega.setId(rs.getInt("id"));
+			 entrega.setId(rs.getInt("id"));
 			entrega.setIdCliente(rs.getInt("idCliente"));
 			entrega.setNumPedido(rs.getInt("numPedido"));
 			entrega.setNomeRecebidor(rs.getString("nomeRecebidor"));
@@ -70,34 +70,31 @@ private Connection conn = null;
 	}
 	
 	
-	/*
+	
 	public Entrega insertEntrega (Entrega entrega) throws SQLException {
 		String sql = "INSERT INTO entregadb (idCliente, numPedido, nomeRecebidor, cpfRecebidor, dataHoraEntrega) VALUES (?, ?, ?, ?, ?);";
 		PreparedStatement pstm;
 		pstm = conn.prepareStatement(sql);
 		//pstm.setInt(1, entrega.getId());
-		pstm.setInt(2, entrega.getIdCliente());
-		pstm.setInt(3, entrega.getNumPedido());
-		pstm.setString(4, entrega.getNomeRecebidor());
-		pstm.setString(5, entrega.getCpfRecebidor());
-		pstm.setString(6, entrega.getDataHoraEntrega());
+		pstm.setInt(1, entrega.getIdCliente());
+		pstm.setInt(2, entrega.getNumPedido());
+		pstm.setString(3, entrega.getNomeRecebidor());
+		pstm.setString(4, entrega.getCpfRecebidor());
+		pstm.setString(5, entrega.getDataHoraEntrega());
 		
 		pstm.execute();
 		
-		//get last inserted
 		return getLastInserted();
 	}
 	
 	private Entrega getLastInserted()  throws SQLException{
-		String sql = "SELECT *FROM entregadb WHERE id = (SELECT MAX(id) FROM entrega)";
+		String sql = "SELECT *FROM entregadb WHERE id = (SELECT MAX(id) FROM entregadb)";
 		Statement stm = conn.createStatement();
 		ResultSet rs = stm.executeQuery(sql);
 		Entrega entrega = null;
-		int id=0,  numPedido=0,  idCliente=0;
-		String nomeRecebidor=null, cpfRecebidor=null, dataHoraEntrega=null;
+
 		while(rs.next()) {
-			entrega = new Entrega(id, numPedido,idCliente,  nomeRecebidor,  cpfRecebidor,
-					 dataHoraEntrega);
+			entrega = new Entrega();
 			entrega.setIdCliente(rs.getInt("idCliente"));
 			entrega.setNumPedido(rs.getInt("numPedido"));
 			entrega.setNomeRecebidor(rs.getString("nomeRecebidor"));
@@ -106,6 +103,6 @@ private Connection conn = null;
 		}
 		
 		return entrega;
-	}*/
+	}
 }
 
