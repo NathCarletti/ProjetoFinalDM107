@@ -49,7 +49,7 @@ public class UsuarioService {
 				return Response.status(Status.NOT_FOUND).build();
 			}
 		}
-		/*@Path("/adduser")
+		@Path("/adduser")
 		@POST
 		@Consumes(MediaType.APPLICATION_JSON)
 		@Produces({MediaType.APPLICATION_JSON})
@@ -68,6 +68,6 @@ public class UsuarioService {
 				e.printStackTrace();
 				return Response.status(Status.INTERNAL_SERVER_ERROR).build();
 			}
-		}*/
+		}
 	}
 

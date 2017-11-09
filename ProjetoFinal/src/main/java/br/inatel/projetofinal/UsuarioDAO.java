@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,32 @@ public class UsuarioDAO {
 	}
 
 	
+	public Usuario insertUsuario (Usuario usuario) throws SQLException {
+		String sql = "INSERT INTO usuariodb (usuario,senha) VALUES (?, ?);";
+		PreparedStatement pstm;
+		pstm = conn.prepareStatement(sql);
+		pstm.setString(1, usuario.getUsuario());
+		pstm.setString(2, usuario.getSenha());
+		
+		pstm.execute();
+		
+		return getLastInserted();
+	}
 	
+	private Usuario getLastInserted()  throws SQLException{
+		String sql = "SELECT *FROM usuariodb WHERE id = (SELECT MAX(id) FROM usuariodb)";
+		Statement stm = conn.createStatement();
+		ResultSet rs = stm.executeQuery(sql);
+		Usuario usuario = null;
+
+		while(rs.next()) {
+			usuario = new Usuario();
+			usuario.setUsuario(rs.getString("usuario"));
+			usuario.setSenha(rs.getString("senha"));
+		}
+		
+		return usuario;
+	}
 	
 	
 	boolean authUsuario(String user, String senha) throws SQLException {
